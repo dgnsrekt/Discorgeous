@@ -21,6 +21,12 @@ Commands:
   server
   tester
 ```
+
+## TODO
+* DOCs
+* Setup.py
+* Requirements.
+
 ## Contact
 * Twitter = Telegram = @dgnsrekt
 * Email = dgnsrekt@pm.me
