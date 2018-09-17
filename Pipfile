@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+pytest-watch = "*"
+jedi = "*"
+black = "*"
+
+[packages]
+click = "*"
+toml = "*"
+gtts = "*"
+prompt-toolkit = "*"
+structlog = "*"
+colorama = "*"
+"discord.py" = {extras = ["voice"]}
+
+[requires]
+python_version = "3.6"
