@@ -13,11 +13,11 @@ from log import configure_logs
 from repl import Repl
 
 logger = structlog.get_logger(__name__)
+
 configure_logs(log_level="INFO")
 
 general_configuration = GeneralConfiguration()
-client_configuration = ClientConfiguration()
-server_configuration = ServerConfiguration()
+# client_configuration = ClientConfiguration()
 #
 # for k, v in client_config.items():
 #     print(k)
@@ -31,32 +31,39 @@ server_configuration = ServerConfiguration()
 #
 
 
-@click.group()
-def cli():
-    pass
+# @cli.command()
+# @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
+# @click.option("--message", help="message to send", default="hello", type=(str))
+# def client_config(config, message):
+#     client_processes = []
+#     for c in config:
+#         ip = client_configuration[c]["IP"]
+#         port = client_configuration[c]["PORT"]
+#
+#         logger.info("Running client... ", ip=ip, port=port)
+#         click.echo("Running client...")
+#
+#         client = Client(ip=ip, port=port)
+#         client_processes.append(Process(target=client.send, kwargs={"message": message}))
+#
+#     for p in client_processes:
+#         p.start()
+#
+#     for p in client_processes:
+#         p.join()
+#
 
 
-@cli.command()
-@click.option("--ip", default="127.0.0.1", help="IP address")
-@click.argument("port")
-@click.argument("channel")
-@click.argument("token")
-def server(ip, port, channel, token):
-    logger.info("Running server... ", ip=ip, port=port, channel=channel, token=token[:5])
-    click.echo("Running server...")
-    server = Server(ip=ip, port=port, channel_id=channel, bot_token=token)
-    server.run()
+def server_instances_from_configuration_file(config):
+    CONFIG = ServerConfiguration()
 
-
-@cli.command()
-@click.option("--config", help="runs configuration by name", type=(str), multiple=True)
-def server_config(config):
     server_processes = []
     for c in config:
-        ip = server_configuration[c]["IP"]
-        port = server_configuration[c]["PORT"]
-        token = server_configuration[c]["VOICE_TOKEN"]
-        channel = server_configuration[c]["CHANNEL_ID"]
+        logger.info("Building server configuration:", section=config)
+        ip = CONFIG[c]["IP"]
+        port = CONFIG[c]["PORT"]
+        token = CONFIG[c]["VOICE_TOKEN"]
+        channel = CONFIG[c]["CHANNEL_ID"]
 
         server = Server(ip=ip, port=port, channel_id=channel, bot_token=token)
         server_processes.append(Process(target=server.run))
@@ -79,6 +86,41 @@ def server_config(config):
         )
 
 
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
+@click.option("--ip", default="127.0.0.1", help="IP address")
+@click.option("--port", default="5000", help="Port")
+@click.option(
+    "--normal", help="runs one instance of the server. requires --channel --token", is_flag=True
+)
+@click.option("--config", help="runs configuration by name", type=(str), multiple=True)
+@click.option("--channel", help="runs configuration by name", type=(str), multiple=True)
+@click.option("--token", help="runs configuration by name", type=(str), multiple=True)
+def server(ip, port, channel, token, normal, config):
+    if normal:
+        validate_normal = {"channel": channel, "token": token}
+        for key, arg in validate_normal.items():
+            assert (
+                len(arg[0]) > 0
+            ), f"{key} is empty. Please add the --{key} flag with the approprate information."
+
+        logger.info("Running server... ", ip=ip, port=port, channel=channel, token=token[:5])
+        click.echo("Running server...")
+        server = Server(ip=ip, port=port, channel_id=channel[0], bot_token=token[0])
+        server.run()
+
+    elif len(config) > 0:
+        click.echo("running config")
+        server_instances_from_configuration_file(config)
+
+    else:
+        click.echo("Please choose a config file or run in normal mode.")
+
+
 @cli.command()
 @click.option("--ip", default="127.0.0.1", help="IP address")
 @click.option("--port", default="5000", help="Port")
@@ -94,28 +136,6 @@ def client(ip, port, message):
         logger.info("Client succesfully send message... ", ip=ip, port=port, ack=ack)
     else:
         logger.info("Client did not send message... ", ip=ip, port=port, ack=ack)
-
-
-@cli.command()
-@click.option("--config", help="runs configuration by name", type=(str), multiple=True)
-@click.option("--message", help="message to send", default="hello", type=(str))
-def client_config(config, message):
-    client_processes = []
-    for c in config:
-        ip = client_configuration[c]["IP"]
-        port = client_configuration[c]["PORT"]
-
-        logger.info("Running client... ", ip=ip, port=port)
-        click.echo("Running client...")
-
-        client = Client(ip=ip, port=port)
-        client_processes.append(Process(target=client.send, kwargs={"message": message}))
-
-    for p in client_processes:
-        p.start()
-
-    for p in client_processes:
-        p.join()
 
 
 @cli.command()
