@@ -6,6 +6,7 @@ from time import sleep
 
 from client import Client
 from server import Server
+from song import Song
 
 from configuration import GeneralConfiguration, ClientConfiguration, ServerConfiguration
 
@@ -185,6 +186,22 @@ def repl(ip, port):
     repl = Repl(ip=ip, port=port)
     try:
         repl.start()
+    except KeyboardInterrupt as e:
+        click.echo(str(e))
+    finally:
+        sys.exit()
+
+
+@cli.command()
+@click.option("--ip", default="127.0.0.1", help="IP address")
+@click.option("--port", default="5000", help="Port")
+def tester(ip, port):
+    logger.info("Running tester... ", ip=ip, port=port)
+    click.echo("Running tester...")
+
+    song = Song(ip=ip, port=port)
+    try:
+        song.start()
     except KeyboardInterrupt as e:
         click.echo(str(e))
     finally:
