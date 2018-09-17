@@ -1,3 +1,21 @@
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent
+
+INFO_LOG_PATHS = PROJECT_ROOT.parent / "info.log"
+ERROR_LOG_PATHS = PROJECT_ROOT.parent / "error.log"
+
+CONFIG_FOLDER_PATH = PROJECT_ROOT.parent / "config"
+
+GENERAL_CONFIGURATION_PATH = CONFIG_FOLDER_PATH / "general_config.toml"
+SERVER_CONFIGURATION_PATH = CONFIG_FOLDER_PATH / "server_config.toml"
+CLIENT_CONFIGURATION_PATH = CONFIG_FOLDER_PATH / "client_config.toml"
+
+
+__all__ = [
+    PROJECT_ROOT,
+    INFO_LOG_PATHS,
+    ERROR_LOG_PATHS,
+    SERVER_CONFIGURATION_PATH,
+    CLIENT_CONFIGURATION_PATH,
+]
