@@ -124,7 +124,9 @@ def server(ip, port, channel, token, normal, config, tmux):
                 len(arg[0]) > 0
             ), f"{key} is empty. Please add the --{key} flag with the approprate information."
 
-        logger.info("Running server... ", ip=ip, port=port, channel=channel, token=token[:5])
+        logger.info(
+            "Running server... ", ip=ip, port=port, channel=channel[0][:5], token=token[0][:5]
+        )
         click.echo("Running server...")
         server = Server(ip=ip, port=port, channel_id=channel[0], bot_token=token[0])
         server.run()
