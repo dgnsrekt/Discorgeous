@@ -54,7 +54,7 @@ Still alive.
 Still alive.
 
 website: https://www.fomodd.io
-telegram = twitter = @ d g n s rekt 
+telegram = twitter = @ d g n s rekt
 """.split(
     "\n"
 )
@@ -74,6 +74,8 @@ class Song(Client):
         for message in SONG:
             if len(message) > 0 and message != " ":
                 await self.handler(message, loop)
+        else:
+            loop.close()
 
     def start(self):
         loop = asyncio.get_event_loop()
