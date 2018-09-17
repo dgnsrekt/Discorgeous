@@ -22,24 +22,12 @@ logger = structlog.get_logger(__name__)
 configure_logs(log_level="INFO")
 
 general_configuration = GeneralConfiguration()
-# client_configuration = ClientConfiguration()
-#
-# for k, v in client_config.items():
-#     print(k)
-#     print(v)
-#
-
-#
-# def run_config(configurations, *, section):
-#     for name, config in configurations.items():
-#         logger.info("Fetching configuration... ", section=section, name=config)
-#
-
 
 # @cli.command()
 # @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
 # @click.option("--message", help="message to send", default="hello", type=(str))
 # def client_config(config, message):
+# client_configuration = ClientConfiguration()
 #     client_processes = []
 #     for c in config:
 #         ip = client_configuration[c]["IP"]
@@ -57,6 +45,8 @@ general_configuration = GeneralConfiguration()
 #     for p in client_processes:
 #         p.join()
 #
+
+
 def parse_config_args(config):
     CONFIG = ServerConfiguration()
     ip = CONFIG[config]["IP"]
@@ -81,9 +71,6 @@ def server_instances_from_configuration_file_in_tmux(config):
     else:
         session.attach_session()
 
-    # sleep(5)
-    # server.kill_server()
-
 
 def server_instances_from_configuration_file(config):
     CONFIG = ServerConfiguration()
@@ -92,11 +79,6 @@ def server_instances_from_configuration_file(config):
     for c in config:
         logger.info("Building server configuration:", section=config)
         ip, port, token, channel = parse_config_args(c)
-        #
-        # ip = CONFIG[c]["IP"]
-        # port = CONFIG[c]["PORT"]
-        # token = CONFIG[c]["VOICE_TOKEN"]
-        # channel = CONFIG[c]["CHANNEL_ID"]
 
         server = Server(ip=ip, port=port, channel_id=channel, bot_token=token)
         server_processes.append(Process(target=server.run))
