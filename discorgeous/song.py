@@ -54,7 +54,7 @@ Still alive.
 Still alive.
 
 website: https://www.fomodd.io
-telegram = twitter = @dgnsrekt
+telegram = twitter = @ d g n s rekt 
 """.split(
     "\n"
 )

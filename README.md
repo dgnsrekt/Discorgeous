@@ -19,4 +19,5 @@ Commands:
   client
   repl
   server
+  tester
 ```
