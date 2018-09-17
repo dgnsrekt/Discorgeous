@@ -12,6 +12,10 @@ from configuration import GeneralConfiguration, ClientConfiguration, ServerConfi
 from log import configure_logs
 from repl import Repl
 
+from pathlib import Path
+
+import libtmux
+
 logger = structlog.get_logger(__name__)
 
 configure_logs(log_level="INFO")
@@ -52,6 +56,32 @@ general_configuration = GeneralConfiguration()
 #     for p in client_processes:
 #         p.join()
 #
+def parse_config_args(config):
+    CONFIG = ServerConfiguration()
+    ip = CONFIG[config]["IP"]
+    port = CONFIG[config]["PORT"]
+    token = CONFIG[config]["VOICE_TOKEN"]
+    channel = CONFIG[config]["CHANNEL_ID"]
+    return ip, port, token, channel
+
+
+def server_instances_from_configuration_file_in_tmux(config):
+    cli_path = Path(__file__).parent
+    server = libtmux.Server()
+    session = server.new_session(session_name="Discorgous Servers", window_name="Master")
+    for section in config:
+        print("building", section)
+        ip, port, token, channel = parse_config_args(section)
+        window = session.new_window(section)
+        pane = window.select_pane(target_pane=0)
+        pane.send_keys(
+            f"python3 {cli_path} server --normal --ip {ip} --port {port} --token {token} --channel {channel}"
+        )
+    else:
+        session.attach_session()
+
+    # sleep(5)
+    # server.kill_server()
 
 
 def server_instances_from_configuration_file(config):
@@ -60,10 +90,12 @@ def server_instances_from_configuration_file(config):
     server_processes = []
     for c in config:
         logger.info("Building server configuration:", section=config)
-        ip = CONFIG[c]["IP"]
-        port = CONFIG[c]["PORT"]
-        token = CONFIG[c]["VOICE_TOKEN"]
-        channel = CONFIG[c]["CHANNEL_ID"]
+        ip, port, token, channel = parse_config_args(c)
+        #
+        # ip = CONFIG[c]["IP"]
+        # port = CONFIG[c]["PORT"]
+        # token = CONFIG[c]["VOICE_TOKEN"]
+        # channel = CONFIG[c]["CHANNEL_ID"]
 
         server = Server(ip=ip, port=port, channel_id=channel, bot_token=token)
         server_processes.append(Process(target=server.run))
@@ -98,9 +130,10 @@ def cli():
     "--normal", help="runs one instance of the server. requires --channel --token", is_flag=True
 )
 @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
+@click.option("--tmux", help="runs --config in tmux", is_flag=True, default=False)
 @click.option("--channel", help="runs configuration by name", type=(str), multiple=True)
 @click.option("--token", help="runs configuration by name", type=(str), multiple=True)
-def server(ip, port, channel, token, normal, config):
+def server(ip, port, channel, token, normal, config, tmux):
     if normal:
         validate_normal = {"channel": channel, "token": token}
         for key, arg in validate_normal.items():
@@ -115,7 +148,11 @@ def server(ip, port, channel, token, normal, config):
 
     elif len(config) > 0:
         click.echo("running config")
-        server_instances_from_configuration_file(config)
+        if tmux:
+            click.echo("running in tmux")
+            server_instances_from_configuration_file_in_tmux(config)
+        else:
+            server_instances_from_configuration_file(config)
 
     else:
         click.echo("Please choose a config file or run in normal mode.")

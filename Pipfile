@@ -16,6 +16,7 @@ prompt-toolkit = "*"
 structlog = "*"
 colorama = "*"
 "discord.py" = {extras = ["voice"]}
+libtmux = "*"
 
 [requires]
 python_version = "3.6"
