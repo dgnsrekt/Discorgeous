@@ -81,8 +81,8 @@ def server_config(config):
 
 @cli.command()
 @click.option("--ip", default="127.0.0.1", help="IP address")
+@click.option("--port", default="5000", help="Port")
 @click.option("--message", help="message to send", default="hello", type=(str))
-@click.argument("port")
 def client(ip, port, message):
     logger.info("Running client... ", ip=ip, port=port)
     click.echo("Running client...")
@@ -120,7 +120,7 @@ def client_config(config, message):
 
 @cli.command()
 @click.option("--ip", default="127.0.0.1", help="IP address")
-@click.argument("port")
+@click.option("--port", default="5000", help="Port")
 def repl(ip, port):
     logger.info("Running repl... ", ip=ip, port=port)
     click.echo("Running repl...")
