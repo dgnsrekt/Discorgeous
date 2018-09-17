@@ -61,7 +61,7 @@ def server_instances_from_configuration_file_in_tmux(config):
     server = libtmux.Server()
     session = server.new_session(session_name="Discorgous Servers", window_name="Master")
     for section in config:
-        print("building", section)
+        print("building", section)  # TODO: LOGGING
         ip, port, token, channel = parse_config_args(section)
         window = session.new_window(section)
         pane = window.select_pane(target_pane=0)
