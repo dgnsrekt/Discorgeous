@@ -93,7 +93,7 @@ ENV/
 # extra
 *.bak
 *.toml
-*.toml*
+*.toml.bak
 *.mp3
 
 # project
