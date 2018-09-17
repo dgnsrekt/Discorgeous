@@ -21,3 +21,6 @@ Commands:
   server
   tester
 ```
+## Contact
+* Twitter = Telegram = @dgnsrekt
+* Email = dgnsrekt@pm.me
