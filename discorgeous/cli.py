@@ -19,11 +19,11 @@ import libtmux
 
 logger = structlog.get_logger(__name__)
 
-configure_logs(log_level="INFO")
+configure_logs(log_level="INFO")  # TODO get from config info if not debug
 
 general_configuration = GeneralConfiguration()
 
-# @cli.command()
+# @cli.command() #TODO: finsih this
 # @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
 # @click.option("--message", help="message to send", default="hello", type=(str))
 # def client_config(config, message):
@@ -47,7 +47,7 @@ general_configuration = GeneralConfiguration()
 #
 
 
-def parse_config_args(config):
+def parse_config_args(config):  # TODO: need to make a different one for the client side.
     CONFIG = ServerConfiguration()
     ip = CONFIG[config]["IP"]
     port = CONFIG[config]["PORT"]
