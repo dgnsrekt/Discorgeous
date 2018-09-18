@@ -78,9 +78,12 @@ discorgeous server --config ServerOne --config ServerTwo --tmux
 
 ### TODO
 * Client over SSH
-* DOCs
-* config files in relative path
-* Requirements.
+* Documentation
+* Tests
+* Config files in user/relative path
+* Requirements
+* Example sript importing client into another project
+* Link to discord voice bot token guide
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
