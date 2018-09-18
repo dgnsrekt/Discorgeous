@@ -30,7 +30,7 @@ class Server:
             if message != " ":
                 return message
         else:
-            return None
+            return "Recieved incomplete message."
 
     async def fetch_gtts_message(self):
         while True:
@@ -60,10 +60,8 @@ class Server:
         self.logger.info("Recieved", address=address, data=data, data_length=len(data))
         writer.write(b"ACK!")
 
-        if message:
-            await self.message_queue.put(message)
-            self.logger.info("Message added to queue", address=address, message=message)
-
+        await self.message_queue.put(message)
+        self.logger.info("Message added to queue", address=address, message=message)
         self.logger.info("Closing Socket", address=address)
         writer.close()
 
