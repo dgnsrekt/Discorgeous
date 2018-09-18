@@ -25,7 +25,7 @@ Commands:
 ```
 ### REQUIRES
 
-On Linux environments, installing voice requires getting the following dependencies:
+On Linux environments, installing discord.py[voice] requires getting the following dependencies:
 ```
 apt install libffi-dev libnacl-dev
 ```
