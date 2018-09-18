@@ -1,6 +1,6 @@
 import click
-from .cli import cli
-from .logo import LOGO
+from cli import cli
+from logo import LOGO
 
 
 def main():
