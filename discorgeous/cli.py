@@ -168,7 +168,7 @@ def client(ip, port, message):
 @click.option("--message", help="message to send", default="hello", type=(str))
 def client_ssh(ip, port, message):
     """ssh client not implemented."""
-    raise NotImplemented("Work in progress.")
+    raise NotImplementedError("Work in progress.")
 
 
 @cli.command()
