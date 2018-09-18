@@ -1,7 +1,6 @@
 # Discorgeous
 Discord + GTTS = a discord bot that sends google text to speech voice messages to discord voice channels.
-REWRITE
-
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 ```
     ____   _
    / __ \ (_)_____ _____ ____   _____ ____ _ ____   __  __ _____
