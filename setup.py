@@ -59,7 +59,7 @@ setup(
     packages=find_packages(),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
-    entry_points={"console_scripts": ["discorgeous=discorgeous:__main__"]},
+    entry_points={"console_scripts": ["discorgeous=discorgeous:core"]},
     install_requires=REQUIRES,
     extras_require={"dev": EXTRAS_REQUIRES},
     include_package_data=True,
