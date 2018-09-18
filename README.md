@@ -37,7 +37,7 @@ git clone https://github.com/dgnsrekt/Discorgeous.git
 cd Discorgeous
 pip3 install -e .
 ```
-### Run Single Server
+#### Run Single Server
 ```
 discorgeous server --normal --port 5555 --token {discord_bot_token} --channel {discord_channel_id}
 ```
