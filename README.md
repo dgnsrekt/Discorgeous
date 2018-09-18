@@ -83,7 +83,7 @@ discorgeous server --config ServerOne --config ServerTwo --tmux
 * Config files in user/relative path
 * Requirements
 * Example sript importing client into another project
-* Link to discord voice bot token guide
+* Link to discord voice bot token creation guide
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
