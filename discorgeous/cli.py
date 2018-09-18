@@ -23,6 +23,8 @@ logger = structlog.get_logger(__name__)
 configure_logs(log_level="INFO")  # TODO get from config info if not debug
 
 general_configuration = GeneralConfiguration()
+server_configuration = ServerConfiguration()
+client_configuration = ClientConfiguration()
 
 # @cli.command() #TODO: finsih this
 # @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
@@ -49,7 +51,7 @@ general_configuration = GeneralConfiguration()
 
 
 def parse_config_args(config):  # TODO: need to make a different one for the client side.
-    CONFIG = ServerConfiguration()
+    CONFIG = server_configuration
     ip = CONFIG[config]["IP"]
     port = CONFIG[config]["PORT"]
     token = CONFIG[config]["VOICE_TOKEN"]
@@ -74,7 +76,7 @@ def server_instances_from_configuration_file_in_tmux(config):
 
 
 def server_instances_from_configuration_file(config):
-    CONFIG = ServerConfiguration()
+    CONFIG = server_configuration
 
     server_processes = []
     for c in config:
