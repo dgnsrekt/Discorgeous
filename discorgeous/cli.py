@@ -203,3 +203,6 @@ def tester(ip, port):
         click.echo(str(e))
     finally:
         sys.exit()
+
+
+# TODO overwrite config command
