@@ -24,13 +24,14 @@ Commands:
   tester      Sends test song to server.
 ```
 ### REQUIRES
+
 On Linux environments, installing voice requires getting the following dependencies:
 ```
 apt install libffi-dev libnacl-dev
 ```
 
 ### QUICK START
-----
+
 #### Install
 ```
 git clone https://github.com/dgnsrekt/Discorgeous.git
