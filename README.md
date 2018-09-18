@@ -31,6 +31,7 @@ apt install libffi-dev libnacl-dev
 ### TODO
 * Client over SSH
 * DOCs
+* config files in relative path
 * Requirements.
 
 ### Contact
