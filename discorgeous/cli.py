@@ -1,21 +1,19 @@
-import click
-import structlog
-import sys
 from multiprocessing import Process
+from pathlib import Path
 from time import sleep
 
-from client import Client
-from server import Server
-from song import Song
+import click
+import libtmux
+import structlog
+import sys
 
 from configuration import GeneralConfiguration, ClientConfiguration, ServerConfiguration
-
 from log import configure_logs
+
+from client import Client
 from repl import Repl
-
-from pathlib import Path
-
-import libtmux
+from server import Server
+from song import Song
 
 logger = structlog.get_logger(__name__)
 
