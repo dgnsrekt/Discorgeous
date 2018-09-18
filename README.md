@@ -23,8 +23,13 @@ Commands:
   tester  Sends test song to server.
 
 ```
-
+## REQUIRES
+On Linux environments, installing voice requires getting the following dependencies:
+```
+apt install libffi-dev libnacl-dev
+```
 ## TODO
+* Client over SSH
 * DOCs
 * Setup.py
 * Requirements.
@@ -32,3 +37,6 @@ Commands:
 ## Contact
 * Twitter = Telegram = @dgnsrekt
 * Email = dgnsrekt@pm.me
+
+## License
+This code is licensed under the MIT License.
