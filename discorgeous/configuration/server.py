@@ -1,6 +1,6 @@
 import toml
 import structlog
-from paths import SERVER_CONFIGURATION_PATH
+from discorgeous.paths import SERVER_CONFIGURATION_PATH
 
 
 class InvalidSettingError(ValueError):

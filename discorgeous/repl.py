@@ -1,5 +1,5 @@
 import asyncio
-from client import Client
+from .client import Client
 from prompt_toolkit import prompt
 from time import sleep
 import sys

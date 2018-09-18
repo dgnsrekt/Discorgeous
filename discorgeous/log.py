@@ -3,7 +3,7 @@ import logging.config
 import structlog
 import sys
 
-from paths import INFO_LOG_PATHS, ERROR_LOG_PATHS
+from .paths import INFO_LOG_PATHS, ERROR_LOG_PATHS
 
 
 def configure_logs(*, log_level):

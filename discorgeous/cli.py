@@ -7,16 +7,16 @@ import libtmux
 import structlog
 import sys
 
-from configuration.general import Configuration as GeneralConfiguration
-from configuration.client import Configuration as ClientConfiguration
-from configuration.server import Configuration as ServerConfiguration
+from . import GeneralConfiguration
+from . import ServerConfiguration
+from . import ClientConfiguration
 
-from log import configure_logs
+from .log import configure_logs
 
-from client import Client
-from repl import Repl
-from server import Server
-from song import Song
+from .client import Client
+from .repl import Repl
+from .server import Server
+from .song import Song
 
 logger = structlog.get_logger(__name__)
 

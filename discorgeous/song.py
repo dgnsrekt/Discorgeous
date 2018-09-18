@@ -61,7 +61,7 @@ telegram = twitter = @ d g n s rekt
 
 
 import asyncio
-from client import Client
+from .client import Client
 from time import sleep
 import sys
 
