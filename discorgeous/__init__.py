@@ -1,6 +1,6 @@
 from . import client
 from . import cli
-from . import configuration
+from .configuration import *
 from . import log
 from . import logo
 from . import paths
