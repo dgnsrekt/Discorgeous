@@ -162,6 +162,15 @@ def client(ip, port, message):
         logger.info("Client did not send message... ", ip=ip, port=port, ack=ack)
 
 
+@cli.command(name="client-ssh")
+@click.option("--ip", default="127.0.0.1", help="IP address")
+@click.option("--port", default="5000", help="Port")
+@click.option("--message", help="message to send", default="hello", type=(str))
+def client_ssh(ip, port, message):
+    """ssh client not implemented."""
+    raise NotImplemented("Work in progress.")
+
+
 @cli.command()
 @click.option("--ip", default="127.0.0.1", help="IP address")
 @click.option("--port", default="5000", help="Port")
