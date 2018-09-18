@@ -2,6 +2,11 @@ from cli import cli
 import click
 from logo import LOGO
 
-if __name__ == "__main__":
+
+def main():
     click.echo(LOGO)
     cli()
+
+
+if __name__ == "__main__":
+    main()
