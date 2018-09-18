@@ -6,4 +6,4 @@ from . import paths
 from . import repl
 from . import server
 from . import song
-from . import configuration
+import configuration

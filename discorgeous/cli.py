@@ -7,7 +7,10 @@ import libtmux
 import structlog
 import sys
 
-from configuration import GeneralConfiguration, ClientConfiguration, ServerConfiguration
+from configuration.general import Configuration as GeneralConfiguration
+from configuration.client import Configuration as ClientConfiguration
+from configuration.server import Configuration as ServerConfiguration
+
 from log import configure_logs
 
 from client import Client
@@ -57,7 +60,7 @@ def parse_config_args(config):  # TODO: need to make a different one for the cli
 def server_instances_from_configuration_file_in_tmux(config):
     cli_path = Path(__file__).parent
     server = libtmux.Server()
-    session = server.new_session(session_name="Discorgous Servers", window_name="Master")
+    session = server.new_session(session_name="Discorgeous Servers", window_name="Master")
     for section in config:
         print("building", section)  # TODO: LOGGING
         ip, port, token, channel = parse_config_args(section)

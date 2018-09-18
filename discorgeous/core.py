@@ -1,11 +1,11 @@
 import click
-from cli import cli
+import cli
 from logo import LOGO
 
 
 def main():
     click.echo(LOGO)
-    cli()
+    cli.cli()
 
 
 if __name__ == "__main__":
