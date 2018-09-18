@@ -117,6 +117,7 @@ def cli():
 @click.option("--channel", help="runs configuration by name", type=(str), multiple=True)
 @click.option("--token", help="runs configuration by name", type=(str), multiple=True)
 def server(ip, port, channel, token, normal, config, tmux):
+    """Runs the discord bot server."""
     if normal:
         validate_normal = {"channel": channel, "token": token}
         for key, arg in validate_normal.items():
@@ -148,6 +149,7 @@ def server(ip, port, channel, token, normal, config, tmux):
 @click.option("--port", default="5000", help="Port")
 @click.option("--message", help="message to send", default="hello", type=(str))
 def client(ip, port, message):
+    """Send a single message to server."""
     logger.info("Running client... ", ip=ip, port=port)
     click.echo("Running client...")
 
@@ -164,6 +166,7 @@ def client(ip, port, message):
 @click.option("--ip", default="127.0.0.1", help="IP address")
 @click.option("--port", default="5000", help="Port")
 def repl(ip, port):
+    """Repl messages to server."""
     logger.info("Running repl... ", ip=ip, port=port)
     click.echo("Running repl...")
 
@@ -180,6 +183,7 @@ def repl(ip, port):
 @click.option("--ip", default="127.0.0.1", help="IP address")
 @click.option("--port", default="5000", help="Port")
 def tester(ip, port):
+    """Sends test song to server."""
     logger.info("Running tester... ", ip=ip, port=port)
     click.echo("Running tester...")
 

@@ -15,10 +15,11 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  client
-  repl
-  server
-  tester
+  client  Send a single message to server.
+  repl    Repl messages to server.
+  server  Runs the discord bot server.
+  tester  Sends test song to server.
+
 ```
 
 ## TODO
