@@ -23,20 +23,20 @@ Commands:
   server      Runs the discord bot server.
   tester      Sends test song to server.
 ```
-## REQUIRES
+### REQUIRES
 On Linux environments, installing voice requires getting the following dependencies:
 ```
 apt install libffi-dev libnacl-dev
 ```
-## TODO
+### TODO
 * Client over SSH
 * DOCs
 * Setup.py
 * Requirements.
 
-## Contact
+### Contact
 * Twitter = Telegram = @dgnsrekt
 * Email = dgnsrekt@pm.me
 
-## License
+### License
 This code is licensed under the MIT License.
