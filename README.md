@@ -17,11 +17,11 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  client  Send a single message to server.
-  repl    Repl messages to server.
-  server  Runs the discord bot server.
-  tester  Sends test song to server.
-
+  client      Send a single message to server.
+  client-ssh  ssh client not implemented.
+  repl        Repl messages to server.
+  server      Runs the discord bot server.
+  tester      Sends test song to server.
 ```
 
 ## TODO
