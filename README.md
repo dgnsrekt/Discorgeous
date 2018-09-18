@@ -28,6 +28,46 @@ On Linux environments, installing voice requires getting the following dependenc
 ```
 apt install libffi-dev libnacl-dev
 ```
+
+### QUICK START
+----
+#### Install
+```
+git clone https://github.com/dgnsrekt/Discorgeous.git
+cd Discorgeous
+pip3 install -e .
+```
+#### Run Single Server
+```
+discorgeous server --normal --port 5555 --token {discord_bot_token} --channel {discord_channel_id}
+```
+#### Run Repl Client
+```
+discorgeous repl --port 5555
+```
+#### Run Test Song
+```
+discorgeous tester --port 5555
+```
+#### Run Muliple Servers
+First edit the server_config.toml file in the Discorgeous/config folder.
+```
+[ServerOne] <- What ever name you want
+CHANNEL_ID = "000000000000000000" <- {discord_channel_id}
+VOICE_TOKEN = "00000000000000000000000000000000000000000000000000000000000" <- {discord_bot_token}
+IP = "0.0.0.0"
+PORT = "6666"
+```
+Run server with configuration section name
+```
+discorgeous server --config ServerOne --config ServerTwo
+```
+Run in seperate tmux instances
+```
+discorgeous server --config ServerOne --config ServerTwo --tmux
+```
+
+
 ### TODO
 * Client over SSH
 * DOCs
