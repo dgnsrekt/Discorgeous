@@ -46,6 +46,8 @@ class Configuration:
         self._load()
 
     def _check(self):
+        self.PATH.parent.mkdir(exist_ok=True)
+
         if not self.PATH.exists():
             self.logger.info("Configuration file not found.", path=self.PATH)
             self.write_clean_configuration_file()
