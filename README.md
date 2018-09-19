@@ -134,6 +134,7 @@ finally:
 * Add non-async version of the client.
 * Dump Client config.
 * Example Random lyrics/quotes.
+* Client Start should take a list of coroutines, add to loop, then start.
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
