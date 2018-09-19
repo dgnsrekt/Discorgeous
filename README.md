@@ -130,6 +130,7 @@ finally:
 * Config files in user/relative path
 * Clean and update Requirements
 * Link to discord voice bot token creation guide
+* Add port check to server config to make sure all ports are unique.
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
