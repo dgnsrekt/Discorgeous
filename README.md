@@ -54,17 +54,17 @@ discorgeous tester --port 5555
 First edit the server_config.toml file in the Discorgeous/config folder.
 Add as many servers as you like.
 ```
-[ServerOne] <- What ever name you want
+[ServerOne] <- Whatever name you want.
 CHANNEL_ID = "000000000000000000" <- {discord_channel_id}
 VOICE_TOKEN = "00000000000000000000000000000000000000000000000000000000000" <- {discord_bot_token}
 IP = "0.0.0.0"
-PORT = "6666" <- Make sure each server has a different port
+PORT = "6666" <- Make sure each server has a different port.
 
-[ServerTwo] <- What ever name you want
+[ServerTwo] <- Whatever name you want.
 CHANNEL_ID = "111111111111111111" <- {discord_channel_id}
 VOICE_TOKEN = "11111111111111111111111111111111111111111111111111111111111" <- {discord_bot_token}
 IP = "0.0.0.0"
-PORT = "5555" <- Make sure each server has a different port
+PORT = "5555" <- Make sure each server has a different port.
 ```
 Run server with configuration section name
 ```
