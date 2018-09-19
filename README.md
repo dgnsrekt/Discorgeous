@@ -75,7 +75,7 @@ Run in seperate tmux instances
 discorgeous server --config ServerOne --config ServerTwo --tmux
 ```
 ### Example Client Script
-The MinuteNotificationClient sends the current time message to the Discorgeous Server every minute.
+The MinuteNotificationClient sends a current time message to a discorgeous server every minute.
 ```
 from discorgeous import Client
 from datetime import datetime
