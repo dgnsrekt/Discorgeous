@@ -133,6 +133,7 @@ finally:
 * Add port check to server config to make sure all ports are unique.
 * Add non-async version of the client.
 * Dump Client config.
+* Example Random lyrics/quotes.
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
