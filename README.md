@@ -125,7 +125,7 @@ finally:
 * Documentation
 * Tests
 * Config files in user/relative path
-* Requirements
+* Clean and update Requirements
 * Link to discord voice bot token creation guide
 
 ### Contact
