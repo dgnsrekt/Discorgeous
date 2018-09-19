@@ -40,7 +40,7 @@ pip3 install -e .
 ```
 #### Run Single Server
 ```
-discorgeous server --normal --port 5555 --token {discord_bot_token} --channel {discord_channel_id}
+discorgeous server --single --port 5555 --token {discord_bot_token} --channel {discord_channel_id}
 ```
 #### Run REPL Client
 ```

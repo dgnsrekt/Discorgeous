@@ -69,7 +69,7 @@ def server_instances_from_configuration_file_in_tmux(config):
         window = session.new_window(section)
         pane = window.select_pane(target_pane=0)
         pane.send_keys(
-            f"python3 {cli_path} server --normal --ip {ip} --port {port} --token {token} --channel {channel}"
+            f"python3 {cli_path} server --single --ip {ip} --port {port} --token {token} --channel {channel}"
         )
     else:
         session.attach_session()
@@ -113,17 +113,17 @@ def cli():
 @click.option("--ip", default="127.0.0.1", help="IP address")
 @click.option("--port", default="5000", help="Port")
 @click.option(
-    "--normal", help="runs one instance of the server. requires --channel --token", is_flag=True
+    "--single", help="runs one instance of the server. requires --channel --token", is_flag=True
 )
 @click.option("--config", help="runs configuration by name", type=(str), multiple=True)
 @click.option("--tmux", help="runs --config in tmux", is_flag=True, default=False)
 @click.option("--channel", help="runs configuration by name", type=(str), multiple=True)
 @click.option("--token", help="runs configuration by name", type=(str), multiple=True)
-def server(ip, port, channel, token, normal, config, tmux):
+def server(ip, port, channel, token, single, config, tmux):
     """Runs the discord bot server."""
-    if normal:
-        validate_normal = {"channel": channel, "token": token}
-        for key, arg in validate_normal.items():
+    if single:
+        validate_single = {"channel": channel, "token": token}
+        for key, arg in validate_single.items():
             assert (
                 len(arg[0]) > 0
             ), f"{key} is empty. Please add the --{key} flag with the approprate information."
@@ -144,7 +144,7 @@ def server(ip, port, channel, token, normal, config, tmux):
             server_instances_from_configuration_file(config)
 
     else:
-        click.echo("Please choose a config file or run in normal mode.")
+        click.echo("Please choose a config file or run in single mode.")
 
 
 @cli.command()
