@@ -11,8 +11,10 @@ class MinuteNotificationClient(Client):
 
     async def timeupdate(self, *, loop):
         while True:
-            current_time = datetime.now().time().strftime("%I:%M:%S")
-            message = f"The current time is {current_time}."
+            current_time = datetime.now().time()
+            hour = current_time.hour
+            minute = current_time.minute
+            message = f"The current time is {hour} {minute}."
             await self.handler(message, loop)
             await asyncio.sleep(self.sleep_interval)
 
@@ -36,6 +38,6 @@ try:
 except KeyboardInterrupt as e:
     print(str(e))
 except Exception as e:
-    raise e
+    print(str(e))
 finally:
     sys.exit()
