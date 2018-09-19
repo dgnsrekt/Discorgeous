@@ -132,6 +132,7 @@ finally:
 * Link to discord voice bot token creation guide
 * Add port check to server config to make sure all ports are unique.
 * Add non-async version of the client.
+* Dump Client config.
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
