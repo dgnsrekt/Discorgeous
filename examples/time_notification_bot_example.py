@@ -29,7 +29,7 @@ class MinuteNotificationClient(Client):
             loop.close()
 
 
-MNC = MinuteNotificationClient(ip="localhost", port=6666, sleep_interval=10)
+MNC = MinuteNotificationClient(ip="localhost", port=6666, sleep_interval=60)
 
 try:
     MNC.start()
