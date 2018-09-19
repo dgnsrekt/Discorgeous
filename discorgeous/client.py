@@ -18,6 +18,8 @@ class Client:
         data = await reader.read(4096)
         if data.decode() == "ACK!":
             self.ack = True
+        else:
+            self.ack = False
 
         self.logger.info("Closing Socket...", ack=self.ack)
         writer.close()
