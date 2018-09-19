@@ -55,9 +55,9 @@ class Configuration:
     def _load(self):
         self.settings = self._readfile()
 
-        self.logger.info("Configuration file loaded.", path=self.PATH)
+        self.logger.debug("Configuration file loaded.", path=self.PATH)
         for setting in self.settings:
-            self.logger.info(f"{setting} settings:", current=self[setting])
+            self.logger.debug(f"{setting} settings:", current=self[setting])
 
     def _readfile(self):
         with open(self.PATH, "r") as file:
