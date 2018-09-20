@@ -127,14 +127,14 @@ finally:
 * Client over SSH
 * Documentation
 * Tests
-* Config files in user/relative path
-* Clean and update Requirements
-* Link to discord voice bot token creation guide
-* Add port check to server config to make sure all ports are unique.
+* Config files in user path.
+* Update Requirements.
+* Link to discord voice bot token creation guide.
+* Add port/name check to server config to make sure all ports and names are unique.
 * Add non-async version of the client.
 * Dump Client config.
 * Example Random lyrics/quotes.
-* Client Start should take a list of coroutines, add to loop, then start.
+* client.start() method should take a list of coroutines, add them to a loop, then start.
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
