@@ -17,6 +17,7 @@ structlog = "*"
 colorama = "*"
 "discord.py" = {extras = ["voice"]}
 libtmux = "*"
+gtts-token = "*"
 
 [requires]
 python_version = "3.6"
