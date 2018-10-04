@@ -2,11 +2,13 @@ import asyncio
 import discord
 import functools
 from gtts import gTTS
+from gtts.tts import gTTSError
 from io import BytesIO
 import logging
 import string
 import structlog
 from tempfile import TemporaryFile
+from tenacity import retry, wait_exponential, retry_if_exception_type
 
 logging.basicConfig(level=logging.DEBUG)  # TODO: Remove
 
@@ -32,6 +34,7 @@ class Server:
         else:
             return "Recieved incomplete message."
 
+    @retry(retry=retry_if_exception_type(gTTSError), wait=wait_exponential(multiplier=1, max=60))
     async def fetch_gtts_message(self):
         while True:
             message = await self.message_queue.get()
