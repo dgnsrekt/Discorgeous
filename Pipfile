@@ -11,7 +11,6 @@ black = "*"
 [packages]
 click = "*"
 toml = "*"
-gtts = "*"
 prompt-toolkit = "*"
 structlog = "*"
 colorama = "*"
@@ -19,6 +18,7 @@ colorama = "*"
 libtmux = "*"
 gtts-token = "*"
 tenacity = "*"
+gtts = "*"
 
 [requires]
 python_version = "3.6"
