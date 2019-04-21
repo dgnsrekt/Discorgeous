@@ -135,6 +135,8 @@ finally:
 * Dump Client config.
 * Example Random lyrics/quotes.
 * client.start() method should take a list of coroutines, add them to a loop, then start.
+* Py package
+* Update for discord.py 1.0
 
 ### Contact
 * Twitter = Telegram = @dgnsrekt
