@@ -139,7 +139,7 @@ finally:
 * Update for discord.py 1.0
 
 ### Contact
-* Twitter = Telegram = @dgnsrekt
+* Twitter = Telegram = Discord = @dgnsrekt
 * Email = dgnsrekt@pm.me
 
 ### License
